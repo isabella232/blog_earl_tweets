@@ -221,7 +221,7 @@ tweeters <- talks_and_tweets %>%
 
 Each line is a twitter user (twitterer? tweeter? tweep?) and each observation represents a tweet during a presentation. My expectation was that by drawing a line between the observations you could see how people switch (or don't switch) between talks. That has clearly failed as the tweeting behaviour isn't consistent or numerous enough to actually see that. I'm quite glad it's not possible since tracking people isn't what Twitter is for.
 
-The code and data for this blogpost are available on GitHub so feel free to play around with it yourself. Do let us know if you create any awesome visualisations or if we can improve on any of the above. If you also want to tweet at conferences, EARL Boston is happening on 1-3 November and [tickets](https://ti.to/earl-conference/boston-2017) are still available. I promise we won't track you!  
+The code and data for this blogpost are available on [GitHub](https://github.com/MangoTheCat/blog_earl_tweets) so feel free to play around with it yourself. Do let us know if you create any awesome visualisations or if we can improve on any of the above. If you also want to tweet at conferences, EARL Boston is happening on 1-3 November and [tickets](https://ti.to/earl-conference/boston-2017) are still available. I promise we won't track you!  
 
 
 
