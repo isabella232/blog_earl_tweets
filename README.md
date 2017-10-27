@@ -3,9 +3,9 @@ Adnan Fiaz
 
 
 
-With two out of three EARL conferences part of R history we're really excited about the next EARL conference in [Boston](https://earlconf.com/boston/) (only 1 week away!). This calls for an(other) EARL confernce analysis, this time with Twitter data. Twitter is an amazingly rich data source and a great starting point for any data analysis (I feel there should be a awesome-twitter-blogposts list somewhere).
+With two out of three EARL conferences part of R history we're really excited about the next EARL conference in [Boston](https://earlconf.com/boston/) (only 1 week away!). This calls for an(other) EARL conference analysis, this time with Twitter data. Twitter is an amazingly rich data source and a great starting point for any data analysis (I feel there should be a awesome-twitter-blogposts list somewhere).
 
-I was planning on using the wonderful [rtweet](http://rtweet.info/) package by Micheal Kearney (as advertised by [Bob Rudis](https://rud.is/b/2017/10/22/a-call-to-tweets-blog-posts/)) but unfortunately the Twitter API doesn't provide a full history of tweets. Instead I had to revert to a Python package (*gasp*) called [GetOldTweets](https://github.com/Jefferson-Henrique/GetOldTweets-python). I strongly recommend using the official Twitter API first before going down this path.  
+I was planning on using the wonderful [rtweet](http://rtweet.info/) package by Michael Kearney (as advertised by [Bob Rudis](https://rud.is/b/2017/10/22/a-call-to-tweets-blog-posts/)) but unfortunately the Twitter API doesn't provide a full history of tweets. Instead I had to revert to a Python package (*gasp*) called [GetOldTweets](https://github.com/Jefferson-Henrique/GetOldTweets-python). I strongly recommend using the official Twitter API first before going down this path.  
 
 ### The Data
 
@@ -39,11 +39,11 @@ First things first, let's get a timeline up:
 
 ![](EARL_tweets_files/figure-html/unnamed-chunk-2-1.png)<!-- -->
 
-The hashtags I used to search tweets were generic so the results include tweets from last year's conferences. Let's zoom in on this year's conferences: EARL San Fransisco (5-7 June) and EARL London (12-14 September). They clearly explain the large peaks in the above graph.
+The hashtags I used to search tweets were generic so the results include tweets from last year's conferences. Let's zoom in on this year's conferences: EARL San Francisco (5-7 June) and EARL London (12-14 September). They clearly explain the large peaks in the above graph.
 
 ![](EARL_tweets_files/figure-html/unnamed-chunk-3-1.png)<!-- -->
 
-I've tried to highlight the period when the conferences were on but I don't quite like the result. Let's see if it works better with a barchart.
+I've tried to highlight the period when the conferences were on but I don't quite like the result. Let's see if it works better with a bar chart.
 
 
 ```r
@@ -110,9 +110,9 @@ ggplot(conference_tweets, aes(x=date)) +
 
 ![](EARL_tweets_files/figure-html/unnamed-chunk-6-1.png)<!-- -->
 
-Nothing odd in the pattern of tweets: there are no talks on the first day so barely any tweets; the amount of tweets spikes at the beginning of the other two days and then declines as the day progresses. There is something odd about the timing of the tweets though. I didn't notice it before but when I compared the position of the bars on the x-axis the San Francisco tweets look shifted. And then my lack of travel experience hit me: timezones! The tweets were recorded in UTC time but the talks obviously weren't in the evening in San Francisco. 
+Nothing odd in the pattern of tweets: there are no talks on the first day so barely any tweets; the amount of tweets spikes at the beginning of the other two days and then declines as the day progresses. There is something odd about the timing of the tweets though. I didn't notice it before but when I compared the position of the bars on the x-axis the San Francisco tweets look shifted. And then my lack of travel experience hit me: time zones! The tweets were recorded in UTC time but the talks obviously weren't in the evening in San Francisco. 
 
-After correcting for timezones I can finally merge the tweets with the agenda. 
+After correcting for time zones I can finally merge the tweets with the agenda. 
 
 
 ```r
@@ -199,7 +199,7 @@ tweets_by_presenter$Presenter <- factor(tweets_by_presenter$Presenter, levels=tw
 ![](EARL_tweets_files/figure-html/unnamed-chunk-11-1.png)<!-- -->
 
 
-The visualisation doesn't really work for the large number of presenters although I don't really see another way to add the information about a talk. I also tried to sort the levels of the factor so they appear sorted in the plot but for some reason the _SF_ facet doesn't want to cooperate. There are a number of talks vying for the top spot in San Fransisco but the differences aren't that large. I'm of course assuming my matching heuristic worked perfectly but one or two mismatches and the results could look completely different. The same applies to EARL London but here Joe Cheng clearly takes the crown. 
+The visualisation doesn't really work for the large number of presenters although I don't really see another way to add the information about a talk. I also tried to sort the levels of the factor so they appear sorted in the plot but for some reason the _SF_ facet doesn't want to cooperate. There are a number of talks vying for the top spot in San Francisco but the differences aren't that large. I'm of course assuming my matching heuristic worked perfectly but one or two mismatches and the results could look completely different. The same applies to EARL London but here Joe Cheng clearly takes the crown. 
 
 ### Follow the leader...
 
@@ -219,9 +219,9 @@ tweeters <- talks_and_tweets %>%
 ![](EARL_tweets_files/figure-html/unnamed-chunk-13-1.png)<!-- -->
 ![](EARL_tweets_files/figure-html/unnamed-chunk-14-1.png)<!-- -->
 
-Each line is a twitter user (twitterer? tweeter? tweeps?) and each observation represents a tweet during a presentation. My expectation was that by drawing a line between the observations you could see how people switch (or don't switch) between talks. That has clearly failed as the tweeting behaviour isn't consisent or numerous enough to actually see that. I'm quite glad it's not possible since tracking people isn't what Twitter is for.
+Each line is a twitter user (twitterer? tweeter? tweep?) and each observation represents a tweet during a presentation. My expectation was that by drawing a line between the observations you could see how people switch (or don't switch) between talks. That has clearly failed as the tweeting behaviour isn't consistent or numerous enough to actually see that. I'm quite glad it's not possible since tracking people isn't what Twitter is for.
 
-The code and data for this blogpost are available on GitHub so feel free to play around with it yourself. Do let us know if you create any awesome visualisations or if we can improve on any of the above. If you also want to tweet at conferences, EARL Boston is happening on 1-3 November and tickets are still available. I promise we won't track you!  
+The code and data for this blogpost are available on GitHub so feel free to play around with it yourself. Do let us know if you create any awesome visualisations or if we can improve on any of the above. If you also want to tweet at conferences, EARL Boston is happening on 1-3 November and [tickets](https://ti.to/earl-conference/boston-2017) are still available. I promise we won't track you!  
 
 
 
